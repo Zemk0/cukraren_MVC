@@ -1,0 +1,28 @@
+import express  from 'express';
+import process   from 'node:process';
+import apiRoutes from './src/routes/index.js';
+
+const app  = express();
+const PORT = process.env.PORT ? Number(process.env.PORT) : 8080;
+
+// --- Parse JSON request bodies ---
+app.use(express.json());
+
+// --- Register API routes ---
+app.use('/api', apiRoutes);
+
+// --- 404 handler ---
+app.use((_req, res) => {
+    res.status(404).json({ message: 'Nenájdené' });
+});
+
+// --- Global error handler ---
+app.use((err, _req, res, _next) => {
+    console.error(err);
+    res.status(500).json({ message: 'Interná chyba servera' });
+});
+
+// --- Start server ---
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`[backend] počúva na porte ${PORT}`);
+});

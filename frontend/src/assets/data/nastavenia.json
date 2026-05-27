@@ -1,0 +1,12 @@
+{
+    "shopName": "Cukráreň Janka",
+    "address": "Centrum 2 93/55",
+    "city": "018 41 Dubnica nad Váhom",
+    "phone": "+421 123 456 789",
+    "email": "info@cukrarenjanka.sk",
+    "hours": {
+        "weekdays": "6:00 - 18:00",
+        "saturday": "7:00 - 18:00",
+        "sunday": "9:00 - 18:00"
+    }
+}

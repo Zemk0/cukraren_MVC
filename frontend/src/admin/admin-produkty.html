@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Správa produktov - Admin - Cukráreň Janka</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Správa Produktov</h1>
+            <p>Pridávajte a upravujte produkty v ponuke</p>
+        </div>
+
+        <nav class="admin-nav">
+            <div class="admin-nav-links">
+                <a href="index.html" class="admin-nav-link">Dashboard</a>
+                <a href="admin-produkty.html" class="admin-nav-link active">Produkty</a>
+                <a href="admin-novinky.html" class="admin-nav-link">Novinky</a>
+                <a href="admin-galeria.html" class="admin-nav-link">Galéria</a>
+                <a href="admin-nastavenia.html" class="admin-nav-link">Nastavenia</a>
+                <a href="../index.html" class="admin-nav-link">Späť na web</a>
+            </div>
+        </nav>
+
+        <main>
+            <section class="admin-section">
+                <div class="admin-section-header">
+                    <h2 class="admin-section-title">Pridať / Upraviť Produkt</h2>
+                </div>
+
+                <form id="product-form" class="admin-form">
+                    <input type="hidden" id="product-id">
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="product-name">Názov *</label>
+                            <input type="text" id="product-name" required placeholder="Napr. Svadobná torta">
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="product-category">Kategória *</label>
+                            <select id="product-category" required>
+                                <option value="torty">Torty</option>
+                                <option value="zakusky">Zákusky</option>
+                                <option value="kolace">Koláče</option>
+                                <option value="ostatne" selected>Ostatné</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label for="product-description">Popis</label>
+                        <textarea id="product-description" rows="3" placeholder="Krátky popis produktu"></textarea>
+                    </div>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="product-price">Cena *</label>
+                            <input type="text" id="product-price" required placeholder="Napr. 2,50 €">
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="product-active">Stav</label>
+                            <select id="product-active">
+                                <option value="true" selected>Aktívny (zobrazuje sa)</option>
+                                <option value="false">Neaktívny (skrytý)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label for="product-image">URL obrázka</label>
+                        <input type="text" id="product-image" placeholder="../assets/images/produkty/placeholder.png">
+                        <small>Príklad: ../assets/images/produkty/moj-produkt.jpg</small>
+                    </div>
+
+                    <div class="image-preview" id="product-image-preview">
+                        <div class="image-preview-placeholder">Náhľad obrázka</div>
+                    </div>
+
+                    <div class="admin-form-actions">
+                        <button type="submit" class="btn-save">Uložiť</button>
+                        <button type="button" class="btn-cancel" id="product-cancel">Zrušiť</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="admin-section">
+                <h2 class="admin-section-title">Existujúce Produkty</h2>
+                <div class="admin-table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Názov</th>
+                                <th>Kategória</th>
+                                <th>Cena</th>
+                                <th>Obrázok</th>
+                                <th>Stav</th>
+                                <th>Akcie</th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-list"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/admin.js"></script>
+</body>
+
+</html>

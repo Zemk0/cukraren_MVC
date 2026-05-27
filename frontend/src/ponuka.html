@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ponuka produktov - Cukráreň Janka">
+    <title>Ponuka - Cukráreň Janka</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+    <div id="header_nav"></div>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Naša Ponuka</h1>
+            <p>Vyberte si z našej širokej ponuky domácich dobrôt</p>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <section class="filter-section section-padding">
+            <div class="container">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">Všetko</button>
+                    <button class="filter-btn" data-category="kolace">Koláče</button>
+                    <button class="filter-btn" data-category="zakusky">Zákusky</button>
+                    <button class="filter-btn" data-category="torty">Torty</button>
+                    <button class="filter-btn" data-category="pecivo">Pečivo</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-list section-padding">
+            <div class="container">
+                <div class="products-grid" id="products-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/ponuka.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Správa galérie - Admin - Cukráreň Janka</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Správa Galérie</h1>
+            <p>Pridávajte a spravujte obrázky v galérii</p>
+        </div>
+
+        <nav class="admin-nav">
+            <div class="admin-nav-links">
+                <a href="index.html"            class="admin-nav-link">Dashboard</a>
+                <a href="admin-produkty.html"   class="admin-nav-link">Produkty</a>
+                <a href="admin-novinky.html"    class="admin-nav-link">Novinky</a>
+                <a href="admin-galeria.html"    class="admin-nav-link active">Galéria</a>
+                <a href="admin-nastavenia.html" class="admin-nav-link">Nastavenia</a>
+                <a href="../index.html"         class="admin-nav-link">Späť na web</a>
+            </div>
+        </nav>
+
+        <main>
+            <section class="admin-section">
+                <h2 class="admin-section-title">Pridať Obrázok</h2>
+
+                <form id="gallery-form" class="admin-form">
+                    <div class="admin-form-group">
+                        <label for="gallery-title">Názov obrázka *</label>
+                        <input type="text" id="gallery-title" required placeholder="Napr. Svadobná torta">
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label for="gallery-image">URL obrázka *</label>
+                        <input type="text" id="gallery-image" required placeholder="../assets/images/galeria/torta.jpg">
+                        <small>Príklad: ../assets/images/galeria/moja-torta.jpg</small>
+                    </div>
+
+                    <div class="image-preview" id="gallery-image-preview">
+                        <div class="image-preview-placeholder">Náhľad obrázka</div>
+                    </div>
+
+                    <div class="admin-form-actions">
+                        <button type="submit" class="btn-save">Pridať obrázok</button>
+                        <button type="button" class="btn-cancel" id="gallery-cancel">Zrušiť</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="admin-section">
+                <h2 class="admin-section-title">Existujúce Obrázky</h2>
+                <div class="admin-table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Obrázok</th>
+                                <th>Názov</th>
+                                <th>Akcie</th>
+                            </tr>
+                        </thead>
+                        <tbody id="gallery-list"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/admin.js"></script>
+</body>
+</html>

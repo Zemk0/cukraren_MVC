@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Cukráreň Janka</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <script>
+        if (sessionStorage.getItem('adminLogged') !== 'true') {
+            sessionStorage.setItem('redirectAfterLogin', window.location.href);
+            window.location.href = 'admin-login.html';
+        }
+    </script>
+    <style>
+        .debug-wrap  { max-width: 1000px; margin: 2rem auto; padding: 2rem; }
+        .debug-card  { background: #fff; padding: 1.5rem; border-radius: 8px;
+                       box-shadow: 0 2px 8px rgba(0,0,0,.1); margin-bottom: 1rem; }
+        .debug-card h2 { margin-bottom: 1rem; }
+        .debug-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        pre { background: #f5f5f5; padding: 1rem; border-radius: 4px;
+              max-height: 400px; overflow: auto; font-size: .875rem; }
+    </style>
+</head>
+<body>
+    <div class="debug-wrap">
+        <h1>🔧 Debug Panel</h1>
+
+        <div class="debug-card">
+            <h2>Data Preview</h2>
+            <div class="debug-actions">
+                <button class="btn-secondary" id="btn-products">Produkty</button>
+                <button class="btn-secondary" id="btn-news">Novinky</button>
+                <button class="btn-secondary" id="btn-gallery">Galéria</button>
+            </div>
+            <pre id="preview">Vyberte sekciu...</pre>
+        </div>
+    </div>
+
+    <script src="assets/js/api.js"></script>
+    <script>
+        const preview = document.getElementById('preview');
+
+        async function show(fn) {
+            preview.textContent = 'Načítavam...';
+            try {
+                preview.textContent = JSON.stringify(await fn(), null, 2);
+            } catch (err) {
+                preview.textContent = 'Chyba: ' + err.message;
+            }
+        }
+
+        document.getElementById('btn-products').addEventListener('click', () => show(() => DataService.getProducts()));
+        document.getElementById('btn-news').addEventListener('click',     () => show(() => DataService.getNews()));
+        document.getElementById('btn-gallery').addEventListener('click',  () => show(() => DataService.getGallery()));
+    </script>
+</body>
+</html>
