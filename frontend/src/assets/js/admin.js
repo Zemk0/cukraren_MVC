@@ -41,7 +41,8 @@
             box.innerHTML = '<div class="image-preview-placeholder">Náhľad obrázka</div>';
             return;
         }
-        box.innerHTML = `<img src="${url}" alt="Náhľad"
+        const src = url.startsWith('http') || url.startsWith('/') ? url : `../${url}`;
+        box.innerHTML = `<img src="${src}" alt="Náhľad"
             onerror="this.replaceWith(Object.assign(document.createElement('div'),
                 {className:'image-preview-placeholder',textContent:'Obrázok sa nenašiel'}))">`;
     }

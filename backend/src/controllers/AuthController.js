@@ -2,7 +2,7 @@ import { AuthService }   from '../models/AuthService.js';
 import { AuthFilter }    from '../filters/AuthFilter.js';
 import { AuthValidator } from '../validators/AuthValidator.js';
 import { AuthView }      from '../views/AuthView.js';
-
+import pool from '../config/database.js';
 const authService = new AuthService();
 
 /**
@@ -60,6 +60,8 @@ export class AuthController {
      * Returns { otpauthUri } — use this to generate the QR code.
      */
     async setup(req, res, next) {
+        const { rowCount } = await pool.query('SELECT 1 FROM admin_users LIMIT 1');
+        if (rowCount > 0) return res.status(403).json({ message: 'Setup already complete.' });
         try {
             const data   = AuthFilter.forLogin(req.body);
             const errors = AuthValidator.forLogin(data);

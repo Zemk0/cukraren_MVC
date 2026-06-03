@@ -6,7 +6,8 @@ import { verifyTotp,
          generateTotpSecret,
          buildOtpauthUri }  from '../utils/totp.js';
 
-const JWT_SECRET  = process.env.JWT_SECRET  ?? 'change-me-in-production';
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) throw new Error('JWT_SECRET environment variable is not set');
 const JWT_EXPIRES = process.env.JWT_EXPIRES ?? '8h';
 
 /**

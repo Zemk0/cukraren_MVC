@@ -15,15 +15,12 @@ router.get('/health', (_req, res) => {
 
 // Auth (public — no requireAuth)
 router.use('/auth', authRoutes);
-
 router.use('/produkty',   produktyRoutes);
 router.use('/novinky',    novinkyRoutes);
 router.use('/galeria',    galeriaRoutes);
 
 // Protected — all routes below require a valid JWT
 router.use(requireAuth);
-
-
 router.use('/nastavenia', nastavenieRoutes);
 
 export default router;
